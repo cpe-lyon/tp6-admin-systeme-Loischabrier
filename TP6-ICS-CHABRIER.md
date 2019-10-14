@@ -53,37 +53,47 @@ Après redémarrage, exécuter la commande `df -T`pour vérifier que les 2 parti
 ## Exercice 2. Partitionnement LVM
 
 <span style='color:red'>1.</span> On va réutiliser le disque de 5 Gio de l’exercice précédent. Commencez par démonter les systèmes de
-fichiers montés dans /data et /win s’ils sont encore montés, et supprimez les lignes correspondantes
-du fichier /etc/fstab
+fichiers montés dans /data et /win s’ils sont encore montés, et supprimez les lignes correspondantes du fichier /etc/fstab
 
+Pour démonter les partitions : `umount /data` et `umount /win`.
 
 <span style='color:red'>2.</span> Supprimez les deux partitions du disque, et créez une patition unique de type LVM
 
+Exécuter `fdisk /dev/sdb` puis "d" pour supprimer les 2 partitions.
 
 <span style='color:red'>3.</span> A l’aide de la commande pvcreate, créez un volume physique LVM. Validez qu’il est bien créé, en
 utilisant la commande pvdisplay.
 
+`pvcreate /dev/sdb1` puis on créé une partition normalement puis "t" pour taper le code "8E".
 
 <span style='color:red'>4.</span> A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que
 le volume physique créé à l’étape précédente. Vérifiez à l’aide de la commande vgdisplay.
 
+`vgcreate volume1 /dev/sdb1` puis `vgdisplay.
 
 <span style='color:red'>5.</span> Créez un volume logique appelé lvData occupant l’intégralité de l’espace disque disponible.
+
 
 
 <span style='color:red'>6.</span> Dans ce volume logique, créez une partition que vous formaterez en ext4, puis procédez comme dans
 l’exercice 1 pour qu’elle soit montée automatiquement, au démarrage de la machine, dans /data.
 
 
+
 <span style='color:red'>7.</span> Eteignez la VM pour ajouter un second disque (peu importe la taille pour cet exercice). Redémarrez
 la VM, vérifiez que le disque est bien présent. Puis, répétez les questions 2 et 3 sur ce nouveau disque.
+
 
 
 <span style='color:red'>8.</span> Utilisez la commande vgextend <nom_vg> <nom_pv> pour ajouter le nouveau disque au groupe de
 volumes
 
+
+
 <span style='color:red'>9.</span> Utilisez la commande lvresize (ou lvextend) pour agrandir le volume logique. Enfin, il ne faut pas
 oublier de redimensionner le système de fichiers à l’aide de la commande resize2fs.
+
+
 
 ## Exercice 3. Exécution de commandes en différé : at et cron
 
@@ -91,25 +101,34 @@ oublier de redimensionner le système de fichiers à l’aide de la commande res
 entre temps que la tâche est bien programmée.
 
 
+
 <span style='color:red'>2.</span> Est-ce que le message s’est affiché ? Si la réponse est non, essayez de trouver la cause du problème (par exemple en vous aidant des logs, du manuel...)
+
 
 
 <span style='color:red'>3.</span> Pour tester le fonctionnement de cron, commencez par programmer l’exécution d’une tâche simple,
 l’affichage de “Il faut réviser pour l’examen !”, toutes les 3 minutes.
 
 
+
 <span style='color:red'>4.</span> Programmez l’exécution d’une commande tous les jours, toute l’année, tous les quarts d’heure
+
 
 
 <span style='color:red'>5.</span> Programmez l’exécution d’une commande toutes les cinq minutes à partir de 2 (2, 7, 12, etc.) à 18
 heures les 1er et 15 du mois :
 
 
+
 <span style='color:red'>6.</span> Programmez l’exécution d’une commande du lundi au vendredi à 17 heures
+
 
 
 <span style='color:red'>7.</span> Modifiez votre crontab pour que les messages ne soient plus envoyés par mail, mais redirigés dans un
 fichier de log situé dans votre dossier personnel
 
 
+
 <span style='color:red'>8.</span> Videz votre crontab
+
+
