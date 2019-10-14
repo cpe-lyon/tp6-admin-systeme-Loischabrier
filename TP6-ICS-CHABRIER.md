@@ -69,7 +69,7 @@ utilisant la commande pvdisplay.
 <span style='color:red'>4.</span> A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que
 le volume physique créé à l’étape précédente. Vérifiez à l’aide de la commande vgdisplay.
 
-`vgcreate volume1 /dev/sdb1` puis `vgdisplay.
+`vgcreate volume1 /dev/sdb1` puis `vgdisplay`.
 
 <span style='color:red'>5.</span> Créez un volume logique appelé lvData occupant l’intégralité de l’espace disque disponible.
 
