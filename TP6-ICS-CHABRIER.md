@@ -35,15 +35,19 @@ Elle ne fonctionne pas parce que nos partitions ne sont pas montées.
 machine, respectivement dans les points de montage /data et /win (vous pourrez vous passer des
 UUID en raison de l’impossibilité d’effectuer des copier-coller)
 
+Exécuter la commande `nano /etc/fstab/`puis ajouter ces lignes : 
 
+    /dev/sdb1      /data      ext4     defaults     0       0
+    /dev/sdb2      /win       ext4     defaults     0       0
 
 <span style='color:red'>7.</span> Utilisez la commande mount puis redémarrez votre VM pour valider la configuration
 
+Après redémarrage, exécuter la commande `df -T`pour vérifier que les 2 partitions apparaissent.
 
 <span style='color:red'>8.</span> Montez votre clé USB dans la VM
 
 
-<span style='color:red'>9.</span> Créez un dossier partagé entre votre VM et votre système hôte (rem. il peut être nécessaire d’installer les Additions invité de VirtualBox
+<span style='color:red'>9.</span> Créez un dossier partagé entre votre VM et votre système hôte (rem. il peut être nécessaire d’installer les Additions invité de VirtualBox)
 
 
 ## Exercice 2. Partitionnement LVM
