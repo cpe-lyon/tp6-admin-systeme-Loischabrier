@@ -32,13 +32,13 @@ elle pas sur notre disque ?
 Elle ne fonctionne pas parce que nos partitions ne sont pas montées.
 
 <span style='color:red'>6.</span> Faites en sorte que les deux partitions créées soient montées automatiquement au démarrage de la
-machine, respectivement dans les points de montage /data et /win (vous pourrez vous passer des
-UUID en raison de l’impossibilité d’effectuer des copier-coller)
+machine, respectivement dans les points de montage /data et /win (vous pourrez vous passer des UUID en raison de l’impossibilité d’effectuer des copier-coller)
 
 Exécuter la commande `nano /etc/fstab/`puis ajouter ces lignes : 
 
     /dev/sdb1      /data      ext4     defaults     0       0
     /dev/sdb2      /win       ext4     defaults     0       0
+
 
 <span style='color:red'>7.</span> Utilisez la commande mount puis redémarrez votre VM pour valider la configuration
 
